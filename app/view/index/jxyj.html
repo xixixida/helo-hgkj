@@ -1,0 +1,502 @@
+{% extends "../base/layout.html" %} {% block content %}
+<style>
+    #jxyj {
+        color: #3041a7;
+    }
+
+    #jxyj h3 {
+        background: url(/public/images/jxyj/h3.png);
+        background-repeat: no-repeat;
+        background-position: bottom;
+        padding-bottom: 15px;
+        padding-left: 15px;
+    }
+
+    .jxyj-ul {
+        margin: 15px;
+    }
+
+    .jxyj-ul li {
+        border-bottom: 1px solid #a0a0a0;
+        line-height: 38px;
+    }
+
+    .jxyj-ul span {
+        cursor: pointer;
+    }
+
+    .jxyj-ul .active {
+        color: #000;
+
+    }
+
+    #jxyj .input-group {
+        padding: 0 20px;
+    }
+
+    #jxyj .input-group input {
+        margin-top: 1px;
+    }
+
+    .input-group-addon {
+        cursor: pointer;
+    }
+
+    #jxyj .bor {
+        height: 60px;
+        border-bottom: 2px dashed #dfdfdf;
+        margin-bottom: 15px;
+    }
+
+    #jxyj .jxyj1-a {
+        cursor: pointer;
+    }
+
+    .fanhui {
+        position: relative;
+    }
+
+    .jxyj-time {
+        padding-left: 40px;
+        background: url(/public/images/jxyj/time.png);
+        background-repeat: no-repeat;
+        background-position: left;
+        background-position-y: top;
+        margin-left: 15px;
+        margin-bottom: 20px;
+    }
+
+    .jxyj-tel {
+        padding-left: 40px;
+        background: url(/public/images/jxyj/tel.png);
+        background-repeat: no-repeat;
+        background-position: left;
+        background-position-y: top;
+        margin-left: 15px;
+    }
+
+    .jxyj-ner {
+        padding: 20px;
+        font-weight: bold;
+    }
+
+    .jxyj-ner p {
+        font-size: 18px;
+        padding: 10px 0;
+        border-bottom: 1px solid #3041a7;
+        margin-bottom: 25px;
+    }
+
+    .jxyj-pp {
+        margin-bottom: 14px;
+    }
+
+    .jxyj-por {
+        position: absolute;
+        bottom: 20px;
+    }
+
+    .jxyj-img {
+        cursor: pointer;
+        width: 100px;
+        height: 100px;
+    }
+
+    .jxyj-ul2 {
+        margin-top: 30px;
+        line-height: 26px;
+        text-indent: 52px;
+    }
+
+    .nav-tabs>li.active>a,
+    .nav-tabs>li.active>a:hover {
+        border: 3px solid #3041a7;
+        border-bottom-color: transparent;
+    }
+
+    .nav-tabs>li {
+        margin-bottom: -3px;
+    }
+
+    .nav-tabs {
+        border-bottom: 3px solid #3041a7;
+    }
+
+</style>
+<div>
+    <img src="/public/images/jxyj/ban.png" class="img-responsive" />
+</div>
+<div class="container" id="jxyj">
+    <div class="row">
+        <div class="col-md-3">
+            <h3>教具搜索</h3>
+            <div class="input-group">
+                <input type="text" class="form-control" aria-describedby="basic-addon2">
+                <span class="input-group-addon glyphicon glyphicon-search" id="basic-addon2"></span>
+            </div>
+            <br>
+            <br>
+            <br>
+            <h3>教具分类</h3>
+            <ul class="jxyj-ul">
+                <li><span :class="jxyj3(0)" v-on:click="jxyj1(0)">全部用具</span></li>
+                <li><span :class="jxyj3(1)" v-on:click="jxyj1(1)">基础套装</span></li>
+                <li><span :class="jxyj3(2)" v-on:click="jxyj1(2)">移动机器人</span></li>
+                <li><span :class="jxyj3(3)" v-on:click="jxyj1(3)">仿生机器人</span></li>
+                <li><span :class="jxyj3(4)" v-on:click="jxyj1(4)">飞行器</span></li>
+                <li><span :class="jxyj3(5)" v-on:click="jxyj1(5)">传感器</span></li>
+            </ul>
+            <br>
+            <br>
+            <br>
+            <h3>客户服务</h3>
+            <div class='jxyj-time'>
+                <span>工作时间</span><br>
+                <span>周一到周五：9：00-20：00</span>
+            </div>
+            <div class='jxyj-tel'>
+                <span>联系电话</span><br>
+                <span>热线：010-87587203</span>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row bor">
+                <div class="pull-right" style="margin-top: 35px;">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <a v-if='fanhui' href="/">返回</a>
+                    <span v-if='fanhui == false' v-on:click='fanhui1()' style="cursor: pointer;">返回</span>
+                </div>
+            </div>
+            <div class="row" v-if='fanhui'>
+                <div class="col-md-5 col-md-offset-1 jxyj1-a" v-for="(v,i) in news2" v-on:click='jxyj2(v.id)'>
+                    <img :src="v.pic" class="img-responsive">
+                    <p v-text="v.name"></p>
+                </div>
+            </div>
+            <div class="row fanhui" v-if='fanhui == false'>
+                <div class="col-md-6 jxyj-ner">
+                    <img :src='id.pic' class="img-responsive img-thumbnail">
+                </div>
+                <div class="col-md-6 jxyj-ner">
+                    
+
+                </div>
+
+                <div class="col-xs-12" style=" margin: 40px auto; padding: 15px; background-image: url(/public/images/jxyj/li1.png); background-position: bottom; background-repeat: no-repeat;">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active" role="presentation"><a role="tab" data-toggle="tab">产品详情</a></li>
+                    </ul>
+                    <br>
+                    <div v-if='id.id == 1'>
+                        <news1></news1>
+                    </div>
+                    <div v-else-if="id.id == 2">
+                        <news2></news2>
+                    </div>
+                    <div v-else-if="id.id == 3">
+                        <news3></news3>
+                    </div>
+                    <div v-else-if="id.id == 4">
+                       <news4></news4>
+                        
+                    </div>
+                    <div v-else-if="id.id == 5">
+                       <news5></news5>
+                        
+                    </div>
+                    <div v-else-if="id.id == 6">
+                       <news6></news6>
+                       
+                    </div>
+                    <div v-else-if="id.id == 7">
+                        <news7></news7>
+                        
+                    </div>
+                    <div v-else-if="id.id == 8">
+                       <news8></news8>
+                        
+                    </div>
+                    <div v-else-if="id.id == 9">
+                       <news9></news9>
+                       
+                    </div>
+                    <div v-else-if="id.id == 10">
+                        <news10></news10>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} {% block script %}
+<script>
+    $(function() {
+        setTimeout(function() {
+            lock('#jxyj')
+        }, 1000)
+
+
+    })
+
+    var v1 = {
+        template: `
+            <div>
+                <img src="/public/images/jxyj/news1-1.jpg" class="img-thumbnail" alt="">
+                <ul class="jxyj-ul2">
+                    <li>HTE-VOQEE科教版四足机器人是国内首款面向国内高校和培训机构科研用教学四足机器人，提供提供人工智能与机器人学科建设配套服务 ，机器人集成软件、算法、系统和硬件开发以及机械实验系统、移动平台载具5大开发平台 ，是高校进行人工智能和科研教育的不二选择</li>
+                </ul>
+            </div>
+        `
+    }
+
+    var v2 = {
+        template: ``,
+    }
+
+    var v3 = {
+        template: `
+            <div>
+                <img src="/public/images/jxyj/news3-1.jpg" class="img-thumbnail" alt="">
+                <img src="/public/images/jxyj/news3-2.jpg" class="img-thumbnail" alt="">
+                <img src="/public/images/jxyj/news3-3.jpg" class="img-thumbnail" alt="">            
+                <ul class="jxyj-ul2">
+                    <li>1、采用3D打印，开源数模构建多自由度灵巧手系统，大幅降低使用成本。 2、多样化的交互方式：可采用PC端的词汇点选，也可以采用手机客户端的语音输入。 3、结合前沿的AI技术，与智能语音云平台资源对接，使语音灵巧手获得更智能的体验。 4、软件采用LabVIEW编程，易学易用
+
+嵌入式硬件采用开源的Arduinor硬件模块为基础，根据设计的功能需求，设计硬件的扩展模块。如更多的驱动输出单元，更多的传感器输入单元等。
+
+软件设计采用多屏模式，将基于wifi的服务器模式布置在PC端，将语音的输入模块设计在基于Android系统的手机客户端。</li>
+                </ul>
+            </div>
+        `
+    }
+
+    var v4 = {
+        template: `
+            <div>
+               
+                <ul class="jxyj-ul2">
+                    <li>与固定翼飞行模式相比，扑翼飞行最显著的一个特征就是扑翼在扑动过程中可以同时提供维持飞行所必须的升力和推力。</li>
+                    <li>当以低速均匀水平飞行速度V∞作扑翼飞行时，尽管翼型的几何迎角为0°，但当扑翼向下扑动时，相对于扑翼气流有一个垂直向上的速度Vflap，合成后扑翼相对静止空气的速度大小为 <li>
+                    <li>速度的方向相对 V∞向上偏转了 α 角。按照升力理论，作用在扑翼上的总气动力 F 的方向垂直于合速度 V 的方向，总气动力 F 在垂直方向上的分量 FL即为扑翼的垂直升力，水平分量FT即为水平推力。</li>
+                    <li><h4>飞行控制和通信问题</h4></li>
+                    <li>目前比较有前景的控制方式是在微型飞行器的表面分布微气囊和微型智能自适应机构，通过微流动控制实现对微型飞行器的飞行控制。此外，扑翼式飞行器在飞行过程中往往要飞离操纵者，这就意味着飞行器必须具备灵敏的通信系统，来传递和控制飞行器。研制适合的 GPS 接收机和地面匹配系统是目前较为前沿的通信方式。随着电子和计算机技术的飞速发展，通信系统将更加完善和进步。</li>
+
+                </ul>
+            </div>
+        `
+    }
+
+    var v5 = {
+        template: '',
+    }
+
+    var v6 = {
+        template: `
+            <div>
+                <video src="/public/images/jxyj/news6.mp4" controls="controls" width="100%"></video>
+                <ul class="jxyj-ul2">
+                    <li>通过开发调研和查阅资料发现聋哑人群之间的手语交互是非常方便可行的方式，但手语与自然语言的交互需要专业的人士参与，导致很多场合我们正常人无法理解聋哑人，无法给予他们及时合理的帮助，甚至会给双方造成很大的困惑。因此，我把这一点作为了我的手语交互助手系统研究的重点。我们针对手语日常基本词汇的表达进行分析，并结合聋哑人群的表述习惯深入了解，再结灵巧手设计的结构特点，控制系统原理，提出一种新的构思，采用多自由度全3D打印的简易灵巧手设计，并在控制系统后台构建基于常用词汇的数据库，借助科大讯飞智能语音平台的，完成对语音语义的快速识别计算，以及对灵巧手控制系统的反馈。从而实现了，以语音灵巧手为平台的，聋哑手语与自然语言的交互。</li>
+                </ul>
+            </div>
+    `
+    }
+
+    var v7 = {
+        template: `
+            <div>
+                <video src="/public/images/jxyj/news6.mp4" controls="controls" width="100%"></video>
+                <ul class="jxyj-ul2">
+                    <li>通过开发调研和查阅资料发现聋哑人群之间的手语交互是非常方便可行的方式，但手语与自然语言的交互需要专业的人士参与，导致很多场合我们正常人无法理解聋哑人，无法给予他们及时合理的帮助，甚至会给双方造成很大的困惑。因此，我把这一点作为了我的手语交互助手系统研究的重点。我们针对手语日常基本词汇的表达进行分析，并结合聋哑人群的表述习惯深入了解，再结灵巧手设计的结构特点，控制系统原理，提出一种新的构思，采用多自由度全3D打印的简易灵巧手设计，并在控制系统后台构建基于常用词汇的数据库，借助科大讯飞智能语音平台的，完成对语音语义的快速识别计算，以及对灵巧手控制系统的反馈。从而实现了，以语音灵巧手为平台的，聋哑手语与自然语言的交互。</li>
+                </ul>
+            </div>
+    `
+    }
+    var v8 = {
+        template: `
+            <div>
+                <video src="/public/images/jxyj/news6.mp4" controls="controls" width="100%"></video>
+                <ul class="jxyj-ul2">
+                    <li>通过开发调研和查阅资料发现聋哑人群之间的手语交互是非常方便可行的方式，但手语与自然语言的交互需要专业的人士参与，导致很多场合我们正常人无法理解聋哑人，无法给予他们及时合理的帮助，甚至会给双方造成很大的困惑。因此，我把这一点作为了我的手语交互助手系统研究的重点。我们针对手语日常基本词汇的表达进行分析，并结合聋哑人群的表述习惯深入了解，再结灵巧手设计的结构特点，控制系统原理，提出一种新的构思，采用多自由度全3D打印的简易灵巧手设计，并在控制系统后台构建基于常用词汇的数据库，借助科大讯飞智能语音平台的，完成对语音语义的快速识别计算，以及对灵巧手控制系统的反馈。从而实现了，以语音灵巧手为平台的，聋哑手语与自然语言的交互。</li>
+                </ul>
+            </div>
+    `
+    }
+    var v9 = {
+        template: `
+            <div>
+                <video src="/public/images/jxyj/news6.mp4" controls="controls" width="100%"></video>
+                <ul class="jxyj-ul2">
+                    <li>通过开发调研和查阅资料发现聋哑人群之间的手语交互是非常方便可行的方式，但手语与自然语言的交互需要专业的人士参与，导致很多场合我们正常人无法理解聋哑人，无法给予他们及时合理的帮助，甚至会给双方造成很大的困惑。因此，我把这一点作为了我的手语交互助手系统研究的重点。我们针对手语日常基本词汇的表达进行分析，并结合聋哑人群的表述习惯深入了解，再结灵巧手设计的结构特点，控制系统原理，提出一种新的构思，采用多自由度全3D打印的简易灵巧手设计，并在控制系统后台构建基于常用词汇的数据库，借助科大讯飞智能语音平台的，完成对语音语义的快速识别计算，以及对灵巧手控制系统的反馈。从而实现了，以语音灵巧手为平台的，聋哑手语与自然语言的交互。</li>
+                </ul>
+            </div>
+    `
+    }
+    var v10 = {
+        template: `
+            <div>
+                <video src="/public/images/jxyj/news6.mp4" controls="controls" width="100%"></video>
+                <ul class="jxyj-ul2">
+                    <li>通过开发调研和查阅资料发现聋哑人群之间的手语交互是非常方便可行的方式，但手语与自然语言的交互需要专业的人士参与，导致很多场合我们正常人无法理解聋哑人，无法给予他们及时合理的帮助，甚至会给双方造成很大的困惑。因此，我把这一点作为了我的手语交互助手系统研究的重点。我们针对手语日常基本词汇的表达进行分析，并结合聋哑人群的表述习惯深入了解，再结灵巧手设计的结构特点，控制系统原理，提出一种新的构思，采用多自由度全3D打印的简易灵巧手设计，并在控制系统后台构建基于常用词汇的数据库，借助科大讯飞智能语音平台的，完成对语音语义的快速识别计算，以及对灵巧手控制系统的反馈。从而实现了，以语音灵巧手为平台的，聋哑手语与自然语言的交互。</li>
+                </ul>
+            </div>
+    `
+    }
+
+    var a = new Vue({
+        el: '#jxyj',
+        data: {
+            fanhui: true,
+            id: '',
+            news1: [{
+                    id: 1,
+                    name: '四足仿生机械狗',
+                    pic: '/public/images/大狗.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 3,
+                    brand: 'HTE-VOQEE',
+                    parameter: ' 高度：51cm 重量：22kg ',
+                    technicalService: '步态、机器视觉、语音、机器学习等',
+                    template: 'news1',
+                    canshu:'/public/images/'
+                },
+                {
+                    id: 2,
+                    name: '积木机器人套装',
+                    pic: '/public/images/积木平台.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 1
+                },
+                {
+                    id: 3,
+                    name: '趣味仿生灵巧手',
+                    pic: '/public/images/灵巧手.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 3
+                },
+                {
+                    id: 4,
+                    name: '扑翼飞行器',
+                    pic: '/public/images/扑翼.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 1
+                },
+                {
+                    id: 5,
+                    name: '视觉开发套装',
+                    pic: '/public/images/双目视觉kinect.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 4
+                },
+                {
+                    id: 6,
+                    name: '全方位移动机器人',
+                    pic: '/public/images/无人车.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 2
+                },
+                {
+                    id: 7,
+                    name: '差速移动机器人',
+                    pic: '/public/images/无人车2.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 2
+                },
+                {
+                    id: 8,
+                    name: '并联机械机器人',
+                    pic: '/public/images/并联机械机器人.png',
+                    like: 20,
+                    eye: 50,
+                    pid: 3
+                },
+                {
+                    id: 9,
+                    name: '四旋翼飞行器',
+                    pic: '/public/images/四旋翼飞行器.png',
+                    like: 20,
+                    eye: 50,
+                    pid: 1
+                },
+                {
+                    id: 10,
+                    name: '激光雷达',
+                    pic: '/public/images/激光雷达.png',
+                    like: 20,
+                    eye: 50,
+                    pid: 5
+                }
+
+            ],
+            news2: [],
+            type: 0,
+        },
+        beforeMount: function() {
+            this.news2 = this.news1
+        },
+        methods: {
+            jxyj1: function(i) {
+                this.fanhui = true
+                this.type = i
+                if (i == 0) {
+                    this.news2 = this.news1
+                } else {
+                    var x = []
+                    for (var y of this.news1) {
+                        if (y.pid == i) {
+                            x.push(y)
+                        }
+                    }
+                    this.news2 = x
+                }
+
+            },
+            jxyj2: function(i) {
+
+                var x;
+                for (var y of this.news1) {
+                    if (y.id == i) {
+                        x = y
+                    }
+
+                }
+                this.id = x
+                this.fanhui = false
+
+            },
+            jxyj3: function(i) {
+                if (i == this.type) {
+                    return 'active'
+                }
+            },
+            fanhui1: function() {
+                this.fanhui = true
+            },
+            jxyjImg: function(i) {
+
+            }
+        },
+        components: {
+            'news1': v1,
+            'news2': v2,
+            'news3': v3,
+            'news4': v4,
+            'news5': v5,
+            'news6': v6,
+            'news7': v7,
+            'news8': v8,
+            'news9': v9,
+            'news10': v10,
+        }
+    })
+
+</script>
+{% endblock %}

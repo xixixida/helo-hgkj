@@ -1,0 +1,120 @@
+{% extends "../base/layout.html" %} {% block content %}
+<style>
+    .forum-title {
+        padding-left: 20px;
+
+        font-size: 30px;
+    }
+
+    #forum .media-heading {
+        display: inline-block;
+        padding: 15px;
+        font-size: 20px;
+    }
+
+    #forum-collapse li a {
+        padding: 15px 25px;
+    }
+
+    .forum-right {
+        padding: 20px 0;
+    }
+
+    .forum-paihang {
+        height: 70px;
+        border-bottom: 1px solid #dfdfdf;
+        padding: 8px 0;
+    }
+
+    .forum-paihang span {
+        display: inline-block;
+        line-height: 50px;
+        padding: 0 9px;
+    }
+
+    .forum-gx {
+        border-bottom: 2px solid #dfdfdf;
+        padding: 5px;
+        font-size: 24px;
+        text-indent: 24px;
+        background-image: url(/public/images/forum/9C.png);
+        background-repeat: no-repeat;
+        background-position: left;
+    }
+
+    .forum-btn {
+        margin: 0 auto;
+        margin-bottom: 60px;
+        width: 125px;
+
+    }
+
+    .forum-soso {
+        border: 1px solid #fff;
+        background-color: transparent;
+        line-height: 24px;
+        padding-left: 15px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        width: 260px;
+        padding-right: 40px;
+        display: inline-block;
+    }
+
+    .forum-soso:focus {
+        border: 1px solid #fff;
+        outline: medium;
+    }
+    .forum-group{
+        background: #fff;
+        
+    }
+    .forum-group span {
+        display: inline-block;
+        padding-top: 14px;
+        padding-bottom: 4px;
+        width: 60px;
+        line-height: 60px;
+        background: url(/public/images/forum/A2.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 18px;
+        cursor: pointer;
+    }
+</style>
+{% include "../base/forum.html" %}
+<div id="forum" class="container">
+    <div class="row">
+        <h3 class="forum-title">话题精选</h3>
+        <div class="col-md-9">
+
+            <div>
+                <ul class="media-list">
+                    <li class="media">
+                        <div class="media-left">
+                            <a>
+                                <img class="media-object" src="/public/images/head/1.png" style="margin-top: 10px;" alt="...">
+                              </a>
+                        </div>
+                        <div class="media-body" href="/forum/home?id=1">
+                            <a href=""><strong class="media-heading text-primary">灵巧手有什么功能</strong></a>
+                            <p class="well">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
+                            <span>发布时间：11-01</span>
+                            <hr>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-3 forum-right">
+            <button class="btn btn-primary btn-lg forum-btn btn-block">我要发帖</button>
+            <div class="well">
+                <header class="forum-gx">贡献排行榜</header>
+                <div class="forum-paihang">
+                    <span>1</span><img src="/public/images/head/10.png" width="50" height="50" alt=""><span>xiaoxiao</span><span><strong>回帖数</strong></span><span>456</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block script %} {% endblock %}

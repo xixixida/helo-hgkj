@@ -1,0 +1,551 @@
+{% extends "../base/layout.html" %} {% block content %}
+<div>
+    <img src="/public/images/bg_6.png" class="img-responsive" />
+</div>
+<style>
+    body {
+        background: #dfdfdf;
+    }
+
+</style>
+<div class="container" id="app">
+
+    <br /><br />
+    <div class="row">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="/public/images/bg_8.png" alt="...">
+                    <div class="carousel-caption1">
+                        <h3>DouBao 客户端</h3>
+                        <span>人工智能教育平台</span><br />
+                        <span>案例丰富、大量函数库</span><br />
+                        <strong>了解详情</strong>
+                    </div>
+                </div>
+                <div class="item ">
+                    <img src="/public/images/ban1.png" alt="...">
+                    <div class="carousel-caption1">
+                        <h3>DouBao-M1 控制器</h3>
+                        <span>支持无线传输。</span><br />
+                        <span>引脚全部引出，方便扩展。</span><br />
+                        <span>接头具有防插反设计，安全。</span><br />
+                        <span>支持连接多路舵机和直流电机以及各种传感器。</span><br />
+                        <strong>了解详情</strong>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="/public/images/ban2.png" alt="...">
+                    <div class="carousel-caption1">
+                        <h3>DouBao-C1 电源模块</h3>
+                        <span>大电流输出设计，充电快。</span><br />
+                        <span>采用分离式电池设计，方便更换电池组，寿命长。</span><br />
+                        <span>设计有过充、过放、短路保护，不必担心长时间充电之忧，安全。</span><br />
+                        <strong>了解详情</strong>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="/public/images/bg_9.png" alt="...">
+                    <div class="carousel-caption1">
+                        <h3>机械仿生鸟</h3>
+                        <span>最大飞行速度：5M/s</span><br />
+                        <span>最大续航：20Min</span><br />
+                        <span>扑翼频率：2Hz</span><br />
+                        <span>质量：420g</span><br />
+                        <strong>了解详情</strong>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="/public/images/bg_10.png" alt="...">
+                    <div class="carousel-caption1">
+                        <h3>积木套装</h3>
+                        <span>标准化机械接口，</span><br />
+                        <span>兼容大量传感器套件</span><br />
+                        <span>支持多语言、多平台开发</span><br />
+                        <strong>了解详情</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="cpxt">
+
+        <h1 class="title" align="center">PRODUCT SYSTEM</h1>
+        <h3 class="title1" align="center">产品系统</h3>
+
+    </div>
+    <div class="row cpxt">
+        <div class="col-md-2 col-xs-12 ai-platform">
+
+            <span :class="ai(1)" v-on:click="ai1(1)">仿生系统平台</span>
+            <span :class="ai(2)" v-on:click="ai1(2)">视觉系统平台</span>
+            <span :class="ai(3)" v-on:click="ai1(3)">无人驾驶平台</span>
+            <span :class="ai(4)" v-on:click="ai1(4)">语音系统平台</span>
+            <span :class="ai(5)" v-on:click="ai1(5)">无人机系统平台</span>
+            <span :class="ai(6)" v-on:click="ai1(6)">物联网平台</span>
+            <span :class="ai(7)" v-on:click="ai1(7)">实训系统平台</span>
+        </div>
+        <div class="col-md-10 col-xs-12 " id="ai">
+            <div v-for="(v,i) in items1" :class="row(i)">
+                <div class="col-md-7 col-xs-12  col-sm-7 ai-center">
+                    <img :src="v.pic" class="img-responsive">
+                </div>
+                <div class="col-md-5 col-xs-12 col-sm-5 ai-right">
+                    <h1 v-text="v.title"></h1>
+                    <h4 v-text="v.title1"></h4>
+                    <h4 v-text="v.title2"></h4>
+                    <h4 v-text="v.title3"></h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row" id="jxyj">
+        <h1 class="title" align="center">TEACHING AIDS</h1>
+        <h3 class="title1" align="center">教学用具</h3>
+
+    </div>
+    <div class="row jxyj">
+        <div class="col-md-12 jxyj1">
+            <span class="active" v-on:click="jxyj1(0)">全部用具</span>
+            <span v-on:click="jxyj1(1)">基础套装</span>
+            <span v-on:click="jxyj1(2)">移动机器人</span>
+            <span v-on:click="jxyj1(3)">仿生机器人</span>
+            <span v-on:click="jxyj1(5)">飞行器</span>
+            <span v-on:click="jxyj1(4)">传感器</span>
+        </div>
+        <br />
+        <div class="col-md-3 jxyj1-a" v-for="(v,i) in news2">
+            <a :href="jxyj2(v.id)">
+                <img :src="v.pic" class="img-responsive">
+                <p v-text="v.name"></p>
+            </a>
+
+        </div>
+    </div>
+    <div class="row" id="tjxm">
+        <h1 class="title" align="center">PEOJECTS</h1>
+        <h3 class="title1" align="center">推荐项目</h3>
+    </div>
+    <div class="row tjxm" v-for="(v,i) in news3">
+        <div class="col-md-4 col-xs-12 tjxm-left"><img :src="v.pic" class="img-responsive" /> </div>
+        <div class="col-md-4 col-xs-12 tjxm-center" v-on:click="peojects(v.id)">
+            <p v-text="v.name"></p>
+            <span class="tjxm-center-1" v-text="v.like"></span>
+            <span class="tjxm-center-2" v-text="v.eye"></span>
+            <span class="tjxm-center-3" v-text="v.leave"></span>
+        </div>
+        <div class="col-md-4 col-xs-12 tjxm-right">
+            <div class="media">
+                <div class="media-left media-middle">
+                    <a href="v.id">
+                        <img class="media-object" :src="v.header" alt="...">
+                    </a>
+                    <br />
+                    <p>小笨熊</p>
+                </div>
+                <div class="media-body">
+                    <h3 class="media-heading">项目介绍</h3>
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <h1 class="title" align="center">PARTAER</h1>
+        <h3 class="title1" align="center">合作伙伴</h3>
+    </div>
+    <div class="row partaer">
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-1.png" class="img-circle" />
+            <br />
+            <h5 align="center">中教启星</h5>
+            <h5 align="center">Edustat</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-2.png" class="img-circle" />
+            <br />
+            <h5 align="center"> 智点创科</h5>
+            <h5 align="center">Robotics Instituts of Education</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-3.png" class="img-circle" />
+            <br />
+            <h5 align="center">北京理工大学</h5>
+            <h5 align="center">Beijing Institute of Technology</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-4.png" class="img-circle" />
+            <br />
+            <h5 align="center">北京十一学校</h5>
+            <h5 align="center">Beuing National Day School</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-5.png" class="img-circle" />
+            <br />
+            <h5 align="center">北京第二中学</h5>
+            <h5 align="center">Beijing No.2 Middle School</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-12.png" class="img-circle" />
+            <br />
+            <h5 align="center">沈阳艾克申机器人</h5>
+            <h5 align="center"> the Akshin Robot</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-7.png" class="img-circle" />
+            <br />
+            <h5 align="center">哈尔滨工业大学</h5>
+            <h5 align="center">Harbin Institute of Technology</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-8.png" class="img-circle" />
+            <br />
+            <h5 align="center">首都师范附中</h5>
+            <h5 align="center">Capital Normal University High School</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-9.png" class="img-circle" />
+            <br />
+            <h5 align="center">国家重点实验室</h5>
+            <h5 align="center">State Key Laboratery of Roboties and System</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-10.png" class="img-circle" />
+            <br />
+            <h5 align="center">哈工大机器人集团</h5>
+            <h5 align="center">HIT Robot Group</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-11.png" class="img-circle" />
+            <br />
+            <h5 align="center">首都师范大学</h5>
+            <h5 align="center"> Capital Normal University</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-6.png" class="img-circle" />
+            <br />
+            <h5 align="center">更多</h5>
+            <h5 align="center">More</h5>
+        </div>
+    </div>
+    <div class="row">
+        <h1 class="title" align="center">CONTANT</h1>
+        <h3 class="title1" align="center">联系我们</h3>
+    </div>
+    <div class="row contant">
+        <form action="/contant" method="post">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="contant-tel">
+                    <span>电话： 101-8758-7203</span>
+                    <span>手机： 136-6121-8233</span>
+                </div>
+                <div class="contant-email">
+                    <span>邮箱： dj.xi@hterobot.com</span>
+                    <span>邮箱： zd.yu@hterobot.com</span>
+                </div>
+                <div class="contant-map">
+                    <span>地址： 北京大兴区义庄开发区凉水河二街大族企业湾11号楼A座</span>
+
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="contant-tel1">
+                    <input type="text" name='name' class="form-control" placeholder="姓名：" />
+                </div>
+                <div class="contant-tel1">
+                    <input type="text" name='tel' class="form-control" placeholder="电话：" />
+                </div>
+                <div class="contant-tel1">
+                    <input type="text" name='email' class="form-control" placeholder="邮箱：" />
+                    <input type='hidden' name="_csrf" value="{{csrf}}">
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-4 col-xs-12">
+                <textarea class="form-control"  name='contant' placeholder="建议：">
+                
+            </textarea>
+            </div>
+            <div class="pull-right">
+                <button type="submit" class="btn btn-primary btn1">提交</button>
+                <button type="reset" class="btn btn-default btn2">重置</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %} {% block script %}
+<script>
+    var a = new Vue({
+        el: '#app',
+        data: {
+            name: '{{ user.name }}',
+            tel: '',
+            tel1: '',
+            pwd: '',
+            qpwd: '',
+            yzm: '',
+            news1: [{
+                    id: 1,
+                    name: '四足仿生机械狗',
+                    pic: '/public/images/大狗.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 3
+                },
+                {
+                    id: 2,
+                    name: '积木机器人套装',
+                    pic: '/public/images/积木平台.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 1
+                },
+                {
+                    id: 3,
+                    name: '趣味仿生灵巧手',
+                    pic: '/public/images/灵巧手.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 3
+                },
+                {
+                    id: 4,
+                    name: '扑翼飞行器',
+                    pic: '/public/images/扑翼.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 1
+                },
+                {
+                    id: 5,
+                    name: '视觉开发套装',
+                    pic: '/public/images/双目视觉kinect.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 4
+                },
+                {
+                    id: 6,
+                    name: '全方位移动机器人',
+                    pic: '/public/images/无人车.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 2
+                },
+                {
+                    id: 7,
+                    name: '差速移动机器人',
+                    pic: '/public/images/无人车2.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 2
+                },
+                {
+                    id: 8,
+                    name: '并联机械机器人',
+                    pic: '/public/images/并联机械机器人.png',
+                    like: 20,
+                    eye: 50,
+                    pid: 3
+                },
+                {
+                    id: 9,
+                    name: '四旋翼飞行器',
+                    pic: '/public/images/四旋翼飞行器.png',
+                    like: 20,
+                    eye: 50,
+                    pid: 1
+                },
+                {
+                    id: 10,
+                    name: '激光雷达',
+                    pic: '/public/images/激光雷达.png',
+                    like: 20,
+                    eye: 50,
+                    pid: 5
+                }
+
+            ],
+            items1: [{
+                    id: 1,
+                    title: '仿生系统平台',
+                    pic: '/public/images/p-aifs.png',
+                    title1: '标准化机械接口，提供多尺寸多足类机器人开发套件',
+                    title2: '支持多传感器扩展，硬件接口和机械结构开源',
+                    title3: '支持多平台开发，并提供大量工程学习案例提供仿生运动、视觉、人工智能等算法平台支持',
+                },
+                {
+                    id: 2,
+                    title: "视觉系统平台",
+                    pic: '/public/images/p-aisj.png',
+                    title1: '配套标准化机械连接件、光源等，便于安装和与积木机器人结合 ',
+                    title2: '提供Kinect、RealSense、Xtion等主流双目相机支持',
+                    title3: '配套C++、LabVIEW等多软件平台驱动与大量工程案例',
+                },
+                {
+                    id: 3,
+                    title: "无人驾驶平台",
+                    pic: '/public/images/p-aiwrjs.png',
+                    title1: '提供差速、全向、阿克曼等多类型、多尺寸类型无人驾驶底盘',
+                    title2: '支持多传感器扩展接口，方便主流的传感器集成',
+                    title3: '配套Ros、LabVIEW等多软件平台驱动和实例代码',
+                },
+                {
+                    id: 4,
+                    title: "语音系统平台",
+                    pic: '/public/images/p-yysb.jpg',
+                    title1: '提供语音学习的硬件套装，降低学习成本支持声音信号的提取、滤波、时频分析等工程案例',
+                    title2: '配套Ros、LabVIEW等多软件平台驱动和实例代码',
+                    title3: '提供科大讯飞、百度等主流语音识别平台案例支持',
+                },
+                {
+                    id: 5,
+                    title: "无人机系统平台",
+                    pic: '/public/images/p-wrjsxt.png',
+                    title1: '多尺寸、多类型无人机平台支持',
+                    title2: '完善的实训系统，支持载荷模式',
+                    title3: '基础版模型、硬件、代码开源支持',
+                },
+                {
+                    id: 6,
+                    title: "物联网系统平台",
+                    pic: '/public/images/p-wlw.png',
+                    title1: '物联网云服务支持，提供硬件支持标准化机械接口，能够与其他平台系统快速集成，易于扩展',
+                    title2: '提供Windows、Linux等多平台工程案例',
+                    title3: '支持C、C++、LabVIEW等多语言开发驱动',
+                },
+                {
+                    id: 7,
+                    title: "实训系统平台",
+                    pic: '/public/images/p-jxb.png',
+                    title1: '具备丰富的机器人教学所需的功能模块，可以完成工业机器人所有功能的学习，实用性强',
+                    title2: '提供周边辅助自动化设备，方便更换，实现不同行业的演示功能，内容丰富',
+                    title3: '可结合视觉和语音平台，构建大量工程案例，完善的DouBao云平台支持，大量的学习开发资源',
+                },
+            ],
+            news3: [{
+                    id: 1,
+                    name: '趣味仿生灵巧手',
+                    pic: '/public/images/yyxxdx.png',
+                    like: 20,
+                    eye: 50,
+                    leave: 0,
+                    header: '/public/images/8_150608172703_8.png'
+
+                },
+                {
+                    id: 1,
+                    name: '创客实验室',
+                    pic: '/public/images/yyxxgx.png',
+                    like: 20,
+                    eye: 50,
+                    leave: 0,
+                    header: '/public/images/8_150608172703_8.png'
+                },
+                {
+                    id: 1,
+                    name: '人工智能实验室',
+                    pic: '/public/images/yyxxzxx.png',
+                    like: 20,
+                    eye: 50,
+                    leave: 0,
+                    header: '/public/images/8_150608172703_8.png'
+                },
+            ],
+            news2: '',
+
+        },
+        beforeMount: function() {
+            this.news2 = this.news1
+            setInterval(() => {
+                this.se()
+            }, 20000)
+        },
+        methods: {
+            a1: function() {
+                if (this.name) {
+                    return true
+                } else {
+                    return false
+                }
+            },
+            cpxt: function(a) {
+
+            },
+            href1: function(a) {
+                return '/index/fire?id=' + a
+            },
+            shuffle: function() {
+                this.items = _.shuffle(this.items)
+            },
+            se: function() {
+                var x = this.items1
+                var b = _.rest(x);
+                b.push(x[0])
+                this.items1 = b
+            },
+            row: function(i) {
+
+                if (i == 0) {
+                    return 'row1';
+
+                } else {
+                    return 'row'
+                }
+            },
+            ai: function(i) {
+                var x = this.items1[0].id
+                if (i == x) {
+                    return 'active'
+                }
+            },
+            ai1: function(i) {
+                var arr = [0, 0, 0, 0, 0, 0, 0];
+                var b;
+                for (var x of this.items1) {
+                    b = x.id - i
+
+                    if (b < 0) {
+                        b = 7 + b
+                    }
+                    arr[b] = x;
+
+                }
+                this.items1 = arr
+            },
+            jxyj1: function(i) {
+                if (i == 0) {
+                    this.news2 = this.news1
+                } else {
+                    var x = []
+                    for (var y of this.news1) {
+                        if (y.pid == i) {
+                            x.push(i)
+                        }
+                    }
+                    this.news2 = x
+                }
+            },
+            jxyj2: function(i) {
+                return '/jxyj?id=' + i
+            },
+            peojects: function(i) {
+                window.location.href = '/home?id=' + i
+            }
+        }
+    })
+
+</script>
+{% endblock %}

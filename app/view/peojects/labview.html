@@ -1,0 +1,41 @@
+{% extends "../base/layout.html" %} {% block content %}
+<div class="">
+    <img src="/public/images/bg_4.png" class="img-responsive" />
+</div>
+<div class="container" id="peojects">
+    <div class="row">
+        <div class="col-md-9 col-lg-10">
+            <div class="row">
+                <div class="media">
+                    <div class="media-left">
+                        <a href="#">
+                            <img class="media-object img-circle" src="/public/images/8_150608172703_8.png">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">趣味机械手</h4>
+                        <a href="javascript:;">北京科技俱乐部作品</a><span> | 机器人</span><br />
+                        <span>aixke45645</span>
+                    </div>
+                </div>
+                <hr />
+                <p>
+                    在科技高速发展，社会文明不断进步的今天，社会的和谐发展一定少不了任何一个群体的参与和分享。然而，聋哑人作为一个特殊的群体，受先天或各种因素的影响，与外界的交流成为了他们无法回避的困难，这其中最为关键的就是聋哑人手语与自然语言的交互。因此，我想通过努力，开发一种方便实用且性价比高的手语交互助手系统，帮助聋哑人学习使用手语，并与正常人的自然语言形成更好的交互。
+                </p>
+            </div>
+
+        </div>
+        <div class="col-md-3 col-lg-2">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block style %}
+<script>
+        var a = new Vue({
+            el:'#peojects'
+        })
+</script>
+{% endblock %}

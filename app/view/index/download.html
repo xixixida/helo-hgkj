@@ -1,0 +1,106 @@
+{% extends "../base/layout.html" %} {% block content %}
+<style>
+    #download {
+        color: #515151;
+        margin-bottom: 35px;
+    }
+
+    #download h3 {
+        background-image: url(/public/images/download/bor.png);
+        background-position: bottom;
+        background-repeat: no-repeat;
+        padding-bottom: 10px;
+    }
+
+    .download-l {
+        padding: 44px;
+        border: 1px #dcdcdc solid;
+        border-radius: 10px;
+    }
+
+    .download-al {
+        width: 44px;
+        height: 44px;
+        position: absolute;
+        top: 45%;
+        background-image: url(/public/images/download/f1.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        left: -44px;
+    }
+
+    .download-ar {
+        width: 44px;
+        height: 44px;
+        position: absolute;
+        top: 45%;
+        background-image: url(/public/images/download/f2.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        right: -44px;
+    }
+
+    .download-ar:hover {
+        background-image: url(/public/images/download/fa2.png);
+    }
+
+    .download-al:hover {
+        background-image: url(/public/images/download/fa1.png);
+    }
+
+</style>
+<div>
+    <img src="/public/images/download/ban.png" class="img-responsive" />
+</div>
+<div class="container" id='download'>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>可下载软件</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+            <h1>Doubao 客户端</h1>
+            <br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 download-l">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <img src="/public/images/download/d1.png" class="img-responsive" alt="...">
+                    </div>
+                    <div class="item">
+                        <img src="/public/images/download/d2.png" class="img-responsive" alt="...">
+                    </div>
+                </div>
+                <!-- Controls -->
+                <a class="download-al" href="#carousel-example-generic" role="button" data-slide="prev">
+                    
+                </a>
+                <a class="download-ar" href="#carousel-example-generic" role="button" data-slide="next">
+                    
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3 " style="border-left: 1px solid #dcdcdc;margin-left: 5%;padding-left: 5%; ">
+            <h4>软件下载</h4>
+            <span>版本 &nbsp;  &nbsp; <span class="text-primary"> |  &nbsp; 1.0.0</span></span><br><br>
+            <span>操作系统 &nbsp;  &nbsp; <span class="text-primary"> |  &nbsp;  window</span></span><br><br>
+            <span>价格 &nbsp;  &nbsp; <span class="text-primary"> |  &nbsp; 免费</span></span><br><br><br><br>
+            <a class="btn btn-primary" style="width: 150px; height: 40px; font-size: 16px; line-height: 25px; " href="https://a.html" target="_blank"> &nbsp; 下载 &nbsp; </a>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block script %}
+<script>
+    $(function() {
+        setTimeout(function() {
+            lock('#download')
+        }, 1000)
+    })
+
+</script>
+{% endblock %}

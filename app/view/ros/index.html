@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/vue-resource/1.3.4/vue-resource.min.js"></script>
+    <script src="https://cdn.bootcss.com/socket.io/2.0.3/socket.io.js"></script>
+</head>
+<style>
+   
+
+</style>
+
+<body>
+    <div id='app'>
+        <input type="text" value="{{ctx.csrf}}">
+        <h1>linear</h1>
+        X:<input type="text" v-model='lx'> Y:
+        <input type="text" v-model='ly'> Z:
+        <input type="text" v-model='lz'>
+        <h1>angular</h1>
+        X:<input type="text" v-model='ax'> Y:
+        <input type="text" v-model='ay'> Z:
+        <input type="text" v-model='az'>
+        <h1>background</h1>
+        R: <input type="text" v-model='br'> G: <input type="text" v-model='bg'> B: <input type="text" v-model='bb'>
+        <button type="button" @click='tj'>提交</button>
+        <textarea name="" id="test" cols="30" rows="10" v-model='msg'></textarea>
+    </div>
+
+</body>
+<script>
+    var ws = io.connect('/', {
+            mess: 123456
+        })
+        var msg = [];
+        ws.on('server', function(data) {
+            msg.push(data)
+            $('#test').val(data)
+        })
+
+    var a = new Vue({
+        el: '#app',
+        data: {
+            lx: '',
+            ly: '',
+            lz: '',
+            ax: '',
+            ay: '',
+            az: '',
+            br: '',
+            bg: '',
+            bb: '',
+            csrf: '{{ctx.csrf}}',
+            msg:''
+        },
+        methods: {
+            tj: function() {
+                var data = {
+                    linear: {
+                        x: this.lx,
+                        y: this.ly,
+                        z: this.lz,
+                    },
+                    angular: {
+                        x: this.ax,
+                        y: this.ay,
+                        z: this.az,
+                    }
+                }
+                this.$http.post('/ros/usermess?_csrf={{ctx.csrf}}',data).then(response => {
+
+                    // get body data
+                    this.msg = JSON.stringify(response.body)
+
+                }, response => {
+                    // error callback
+                });
+            },
+            sendMsg: function(mess) {
+                ws.emit('send', mess)
+            }
+        }
+    })
+
+</script>
+
+</html>

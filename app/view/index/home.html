@@ -1,0 +1,223 @@
+{% extends "../base/layout.html" %} {% block content %}
+<div class="">
+    <img src="/public/images/lqs/ban.png" class="img-responsive" />
+</div>
+
+<div class="container" id="peojects">
+    <nav id="right">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="active"><a href="#h1">项目背景</a></li>
+            <li role="presentation" class=""><a href="#h2">项目特色</a></li>
+            <li role="presentation" class=""><a href="#h3">项目原理</a></li>
+        </ul>
+    </nav>
+    <div class="row">
+        <div class="col-md-9 col-xs-9">
+            <div class="media">
+                <div class="media-left">
+                    <a href="#x">
+                            <img class="media-object img-circle" src="/public/images/head/1.png">
+                        </a>
+                    <br>
+                    <span style="display: block;text-align: center; color: #000;">aixke45645</span>
+                </div>
+                <div class="media-body">
+                    <h2 class="media-heading">趣味机械手</h2>
+                    <a href="javascript:;"><strong>北京科技俱乐部作品</strong></a><span> | 机器人</span><br />
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-xs-3 top-r">
+            <span style='background-image: url(/public/images/slzndx.png)'>
+                5
+            </span>
+            <span style='background-image: url(/public/images/ly1.png)'>
+                5
+            </span>
+            <span style='background-image: url(/public/images/lqs/sharing.png)'>
+                5
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-offset-2 col-md-8  col-lg-7 ">
+            <div class="row">
+                <p>
+                    一种方便实用且性价比高的手语交互助手系统，帮助聋哑人学习使用手语，并且能够与正常人的自然语言形成更好的交互。
+                </p>
+                <div class="col-md-12">
+                    <div id="slide" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <video src="/public/images/lqs/0417090a1b043de0fa918d28008adb8c.mp4" controls="controls" width="100%"></video>
+                            </div>
+                            <div class="item">
+                                <img src="/public/images/lqs/1.png" alt="...">
+                            </div>
+                            <div class="item">
+                                <img src="/public/images/lqs/2.png" alt="...">
+
+                            </div>
+                            <div class="item">
+                                <img src="/public/images/lqs/3.png" alt="...">
+
+                            </div>
+                            <div class="item">
+                                <img src="/public/images/lqs/4.png" alt="...">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+
+                <ul class="col-md-12 col-xs-12">
+                    <li class="fi" id='h1'>项目背景</li>
+                    <li>
+                        <ul>
+                            <li>
+                                <p>在科技高速发展，社会文明不断进步的今天，社会的和谐发展一定少不了任何一个群体的参与和分享。然而，聋哑人作为一个特殊的群体，受先天或各种因素的影响，与外界的交流成为了他们无法回避的困难，这其中最为关键的就是聋哑人手语与自然语言的交互。因此，我想通过努力，开发一种方便实用且性价比高的手语交互助手系统，帮助聋哑人学习使用手语，并与正常人的自然语言形成更好的交互。
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    通过开发调研和查阅资料发现聋哑人群之间的手语交互是非常方便可行的方式，但手语与自然语言的交互需要专业的人士参与，导致很多场合我们正常人无法理解聋哑人，无法给予他们及时合理的帮助，甚至会给双方造成很大的困惑。因此，我把这一点作为了我的手语交互助手系统研究的重点。我们针对手语日常基本词汇的表达进行分析，并结合聋哑人群的表述习惯深入了解，再结灵巧手设计的结构特点，控制系统原理，提出一种新的构思，采用多自由度全3D打印的简易灵巧手设计，并在控制系统后台构建基于常用词汇的数据库，借助科大讯飞智能语音平台的，完成对语音语义的快速识别计算，以及对灵巧手控制系统的反馈。从而实现了，以语音灵巧手为平台的，聋哑手语与自然语言的交互。
+                                </p>
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+
+                    </li>
+                    <li class="fi" id='h2'>项目特色</li>
+                    <li>
+                        <ul>
+                            <li>
+                                <p>
+                                    采用3D打印，开源数模构建多自由度灵巧手系统，大幅降低使用成本。
+                                </p>
+
+                            </li>
+                            <li>
+                                <p>多样化的交互方式：可采用PC端的词汇点选，也可以采用手机客户端的语音输入。</p>
+
+                            </li>
+                            <li>
+                                <p>结合前沿的AI技术，与智能语音云平台资源对接，使语音灵巧手获得更智能的体验。</p>
+
+                            </li>
+                            <li>
+                                <p> 软件采用LabVIEW编程，易学易用
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <div class="row">
+
+                <ul class=" col-xs-12">
+                    <li>
+                        <p>语音识别技术，也被称为自动语音识别Automatic Speech Recognition，(ASR)，其目标是将人类的语音中的词汇内容转换为计算机可读的输入，例如按键、二进制编码或者字符序列。与说话人识别及说话人确认不同，后者尝试识别或确认发出语音的说话人而非其中所包含的词汇内容。</p>
+
+                    </li>
+                    <li>
+                        <p>语音识别技术的应用包括语音拨号、语音导航、室内设备控制、语音文档检索、简单的听写数据录入等。语音识别技术与其他自然语言处理技术如机器翻译及语音合成技术相结合，可以构建出更加复杂的应用，例如语音到语音的翻译，在本项目中我们利用语音识别技术，将利用灵巧手为平台，完成自然语言和哑语手语的交互。</p>
+
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+
+
+                <ul class="col-xs-12">
+                    <li class="fi" id='h3'>项目原理</li>
+                    <li>
+                        <p>
+                            1、采用3D打印，开源数模构建多自由度灵巧手系统，大幅降低使用成本。 2、多样化的交互方式：可采用PC端的词汇点选，也可以采用手机客户端的语音输入。 3、结合前沿的AI技术，与智能语音云平台资源对接，使语音灵巧手获得更智能的体验。 4、软件采用LabVIEW编程，易学易用
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            嵌入式硬件采用开源的Arduinor硬件模块为基础，根据设计的功能需求，设计硬件的扩展模块。如更多的驱动输出单元，更多的传感器输入单元等。
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            软件设计采用多屏模式，将基于wifi的服务器模式布置在PC端，将语音的输入模块设计在基于Android系统的手机客户端。
+                        </p>
+
+                    </li>
+                    <li>
+                        <p>
+                            设计完整的数据库，作为衔接语音信号和舵机运动控制信号的交互平台，也是完成从语音识别到语义手语翻译算法的基础。
+                        </p>
+
+                    </li>
+                    <li>
+                        <p>
+                            结合前沿的、开源的AI智能语音识别库，可实现离线应用和在线更新扩展。是一次对AI技术的真实体验与尝试。
+                        </p>
+
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+        <div class="col-md-4 col-lg-3" style="margin-top:50px;color:#000;">
+            <h4 style="color:#000;">项目采用平台：</h4>
+            <img src="/public/images/lqs/ban1.png" class="img-thumbnail" />
+            <h5 align="center">DouBao-M1 控制器</h5>
+        </div>
+    </div>
+
+</div>
+<div class="container-fluid wypl">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                <h3>我要评论</h3>
+                <div class="col-md-9">
+                    <textarea placeholder="你需要登录才能评论"></textarea>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="pull-right">
+                        <button type="button" class='btn btn-primary'> &nbsp; 提交 &nbsp; </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %} {% block script %}
+<script>
+    $(function() {
+        setTimeout(function() {
+            lock('#peojects')
+        }, 1000)
+    })
+    var a = new Vue({
+        el: '#peojects'
+    })
+
+</script>
+{% endblock %}

@@ -1,0 +1,625 @@
+{% extends "../base/layout.html" %} {% block content %}
+<div>
+    <img src="/public/images/bg_6.png" class="img-responsive" />
+</div>
+
+<div class="container" id="app">
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="/public/images/logo70-70.png" />
+                    <div class="modal1">
+                        <label for="exampleInputEmail1">账号 &nbsp; /</label>
+                        <input type="text" id="exampleInputEmail1" v-model="tel" placeholder="手机号" />
+                    </div>
+                    <div class="tishi" v-text="login1"></div>
+                    <div class="modal1">
+                        <label for="exampleInputEmail2">密码 &nbsp; /</label>
+                        <input type="password" placeholder="密码" v-model="pwd" id="exampleInputEmail2" />
+
+                    </div>
+                    <div class="tishi" v-text="login2"></div>
+                    <button type="button" class="btn btn-primary btn-block " style="border-radius: 16px; margin-top:25px; " v-on:click="login()">登陆</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="/public/images/logo70-70.png" />
+                    <div v-show="r1">
+                        <div class="modal1">
+                            <label for="exampleInputEmail1">手机号 &nbsp; /</label>
+                            <input type="text" id="exampleInputEmail1" v-model="tel" />
+                        </div>
+                        <div class="tishi" v-text="re1"></div>
+                        <div class="modal1">
+                            <label for="exampleInputEmail2">验证码 &nbsp; /</label>
+                            <input type="text" style="width: 100px" id="exampleInputEmail2" />
+                            <span class="btn " @click='no()' v-model="yzm" id='yzm'>获取验证码</span>
+                        </div>
+                        <div class="tishi" v-text="re2"></div>
+                        <button type="button" class="btn btn-primary btn-block " style="border-radius: 16px; margin-top:25px; ">下一步</button>
+                    </div>
+                    <div v-if="r2">
+                        <div class="modal1">
+                            <label for="exampleInputEmail1">请输入密码 &nbsp; /</label>
+                            <input type="text" id="exampleInputEmail1" v-model="tel" />
+                        </div>
+                        <div class="tishi" v-text="re1"></div>
+                        <div class="modal1">
+                            <label for="exampleInputEmail2">请确认密码 &nbsp; /</label>
+                            <input type="text" style="width: 100px" id="exampleInputEmail2" />
+                            <span class="btn " @click='no()' v-model="yzm" id='yzm'>获取验证码</span>
+                        </div>
+                        <div class="tishi" v-text="re2"></div>
+                        <button type="button" class="btn btn-primary btn-block " style="border-radius: 16px; margin-top:25px; ">注册</button>
+                    </div>
+                    <div v-if="r3">
+                        <button type="button" class="btn btn-primary btn-block " style="border-radius: 16px; margin-top:25px; ">注册成功</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br /><br />
+    <div class="row">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="/public/images/ban1.png" alt="...">
+                    <div class="carousel-caption1">
+                        <h3>DouBao-M1 控制器</h3>
+                        <span>支持无线传输。</span><br />
+                        <span>引脚全部引出，方便扩展。</span><br />
+                        <span>接头具有防插反设计，安全。</span><br />
+                        <span>支持连接多路舵机和直流电机以及各种传感器。</span><br />
+                        <strong>了解详情</strong>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="/public/images/ban2.png" alt="...">
+                    <div class="carousel-caption1">
+                        <h3>DouBao-C1 电源模块</h3>
+                        <span>大电流输出设计，充电快。</span><br />
+                        <span>采用分离式电池设计，方便更换电池组，寿命长。</span><br />
+                        <span>设计有过充、过放、短路保护，不必担心长时间充电之忧，安全。</span><br />
+                        <strong>了解详情</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="cpxt">
+
+        <h1 class="title" align="center">PRODUCT SYSTEM</h1>
+        <h3 class="title1" align="center">产品系统</h3>
+
+    </div>
+    <div class="row cpxt">
+        <div class="col-md-2 col-xs-12 ai-platform">
+
+            <span :class="ai(1)" v-on:click="ai1(1)">AI仿生平台</span>
+            <span :class="ai(2)" v-on:click="ai1(2)">AI视觉</span>
+            <span :class="ai(3)" v-on:click="ai1(3)">AI无人驾驶平台</span>
+            <span :class="ai(4)" v-on:click="ai1(4)">AI语音</span>
+            <span :class="ai(5)" v-on:click="ai1(5)">AI无人机系统平台</span>
+            <span :class="ai(6)" v-on:click="ai1(6)">物联网平台</span>
+            <span :class="ai(7)" v-on:click="ai1(7)">AI实训平台</span>
+        </div>
+        <div class="col-md-10 col-xs-12 " id="ai">
+            <div v-for="(v,i) in items1" :class="row(i)">
+                <div class="col-md-7 col-xs-12  col-sm-7 ai-center">
+                    <img :src="v.pic" class="img-responsive">
+                </div>
+                <div class="col-md-5 col-xs-12 col-sm-5 ai-right">
+                    <h1 align="center" v-text="v.title"></h1>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row" id="jxyj">
+        <h1 class="title" align="center">TEACHING AIDS</h1>
+        <h3 class="title1" align="center">教学用具</h3>
+
+    </div>
+    <div class="row jxyj">
+        <div class="col-md-12 jxyj1">
+            <span class="active" v-on:click="jxyj1(0)">全部用具</span>
+            <span v-on:click="jxyj1(1)">基础套装</span>
+            <span v-on:click="jxyj1(2)">双目视觉</span>
+            <span v-on:click="jxyj1(3)">仿生机器人</span>
+        </div>
+        <br />
+        <div class="col-md-3 jxyj1-a" v-for="(v,i) in news2">
+            <a :href="jxyj2(v.id)">
+                <img :src="v.pic" class="img-responsive">
+                <p v-text="v.name"></p>
+            </a>
+
+        </div>
+    </div>
+    <div class="row" id="tjxm">
+        <h1 class="title" align="center">PEOJECTS</h1>
+        <h3 class="title1" align="center">推荐项目</h3>
+    </div>
+    <div class="row tjxm" v-for="(v,i) in news3">
+        <div class="col-md-4 col-xs-12 tjxm-left"><img :src="v.pic" class="img-responsive" /> </div>
+        <div class="col-md-4 col-xs-12 tjxm-center" v-on:click="peojects(v.id)">
+            <p v-text="v.name"></p>
+            <span class="tjxm-center-1" v-text="v.like"></span>
+            <span class="tjxm-center-2" v-text="v.eye"></span>
+            <span class="tjxm-center-3" v-text="v.leave"></span>
+        </div>
+        <div class="col-md-4 col-xs-12 tjxm-right">
+            <div class="media">
+                <div class="media-left media-middle">
+                    <a href="v.id">
+                        <img class="media-object" :src="v.header" alt="...">
+                    </a>
+                    <br />
+                    <p>小笨熊</p>
+                </div>
+                <div class="media-body">
+                    <h3 class="media-heading">项目介绍</h3>
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <h1 class="title" align="center">PARTAER</h1>
+        <h3 class="title1" align="center">合作伙伴</h3>
+    </div>
+    <div class="row partaer">
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-1.png" class="img-circle" />
+            <br />
+            <h5 align="center">中教启星</h5>
+            <h5 align="center">Edustat</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-2.png" class="img-circle" />
+            <br />
+            <h5 align="center"> 智点创科</h5>
+            <h5 align="center">Robotics Instituts of Education</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-3.png" class="img-circle" />
+            <br />
+            <h5 align="center">北京理工大学</h5>
+            <h5 align="center">Beijing Institute of Technology</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-4.png" class="img-circle" />
+            <br />
+            <h5 align="center">北京十一学校</h5>
+            <h5 align="center">Beuing National Day School</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-5.png" class="img-circle" />
+            <br />
+            <h5 align="center">北京第二中学</h5>
+            <h5 align="center">Beijing No.2 Middle School</h5>
+        </div>
+        <div class="col-md-2 col-sm-3 col-xs-4">
+            <img src="/public/images/h-6.png" class="img-circle" />
+            <br />
+            <h5 align="center">更多</h5>
+            <h5 align="center">More</h5>
+        </div>
+    </div>
+    <div class="row">
+        <h1 class="title" align="center">CONTANT</h1>
+        <h3 class="title1" align="center">联系我们</h3>
+    </div>
+    <div class="row contant">
+        <form>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="contant-tel">
+                    <span>电话： 101-8758-7203</span>
+                    <span>手机： 136-6121-8233</span>
+                </div>
+                <div class="contant-email">
+                    <span>邮箱： dj.xi@hterobot.com</span>
+                    <span>邮箱： zd.yu@hterobot.com</span>
+                </div>
+                <div class="contant-map">
+                    <span>地址： 北京大兴区义庄开发区凉水河二街大族企业湾11号楼A座</span>
+
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="contant-tel1">
+                    <input type="text" class="form-control" placeholder="姓名：" />
+                </div>
+                <div class="contant-tel1">
+                    <input type="text" class="form-control" placeholder="电话：" />
+                </div>
+                <div class="contant-tel1">
+                    <input type="text" class="form-control" placeholder="邮箱：" />
+                </div>
+            </div>
+            <div class="col-md-5 col-sm-4 col-xs-12">
+                <textarea class="form-control" placeholder="建议：">
+                
+            </textarea>
+            </div>
+            <div class="pull-right">
+                <button type="button" class="btn btn-primary btn1">提交</button>
+                <button type="reset" class="btn btn-default btn2">重置</button>
+            </div>
+        </form>
+    </div>
+
+    {% endblock %}
+
+    {% block script %}
+    <script>
+        var a = new Vue({
+            el: '#app',
+            data: {
+                name: '{{ user.name }}',
+                tel: '',
+                tel1: '',
+                pwd: '',
+                qpwd: '',
+                yzm: '',
+                news1: [{
+                    id: 1,
+                    name: 'NICLASS课程发布指南',
+                    pic: '/public/images/大狗.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 1
+                },
+                {
+                    id: 2,
+                    name: 'NICLASS课程发布指南',
+                    pic: '/public/images/积木平台.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 1
+                },
+                {
+                    id: 3,
+                    name: 'NICLASS课程发布指南',
+                    pic: '/public/images/灵巧手.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 1
+                },
+                {
+                    id: 4,
+                    name: 'NICLASS课程发布指南',
+                    pic: '/public/images/扑翼.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 2
+                },
+                {
+                    id: 5,
+                    name: 'NICLASS课程发布指南',
+                    pic: '/public/images/双目视觉kinect.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 2
+                },
+                {
+                    id: 6,
+                    name: 'NICLASS课程发布指南',
+                    pic: '/public/images/无人车.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 2
+                },
+                {
+                    id: 7,
+                    name: 'NICLASS课程发布指南',
+                    pic: '/public/images/无人车2.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 3
+                },
+                {
+                    id: 8,
+                    name: 'NICLASS课程发布指南',
+                    pic: '/public/images/双目视觉kinect.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 3
+                },
+                {
+                    id: 9,
+                    name: 'NICLASS课程发布指南',
+                    pic: '/public/images/双目视觉kinect.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 3
+                },
+                {
+                    id: 10,
+                    name: 'NICLASS课程发布指南',
+                    pic: '/public/images/双目视觉kinect.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 3
+                },
+                {
+                    id: 1,
+                    name: 'NICLASS课程发布指南',
+                    pic: '/public/images/双目视觉kinect.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 2
+                },
+                {
+                    id: 1,
+                    name: 'NICLASS课程发布指南',
+                    pic: '/public/images/双目视觉kinect.jpg',
+                    like: 20,
+                    eye: 50,
+                    pid: 1,
+                },
+                ],
+                items1: [
+                    {
+                        id: 1,
+                        title: 'AI仿生平台',
+                        pic: '/public/images/p-aifs.png'
+                    },
+                    {
+                        id: 2,
+                        title: "AI视觉",
+                        pic: '/public/images/p-aisj.png'
+                    },
+                    {
+                        id: 3,
+                        title: "AI无人驾驶平台",
+                        pic: '/public/images/p-aiwrjs.png'
+                    },
+                    {
+                        id: 4,
+                        title: "AI语音",
+                        pic: '/public/images/p-yysb.jpg'
+                    },
+                    {
+                        id: 5,
+                        title: "AI无人机系统平台",
+                        pic: '/public/images/p-wrjsxt.png'
+                    },
+                    {
+                        id: 6,
+                        title: "物联网平台",
+                        pic: '/public/images/p-wlw.png'
+                    },
+                    {
+                        id: 7,
+                        title: "AI实训平台",
+                        pic: '/public/images/p-jxb.png'
+                    },
+                ],
+                news3: [
+                    {
+                        id: 1,
+                        name: 'NICLASS课程发布指南',
+                        pic: '/public/images/yyxxdx.png',
+                        like: 20,
+                        eye: 50,
+                        leave: 0,
+                        header: '/public/images/8_150608172703_8.png'
+
+                    },
+                    {
+                        id: 1,
+                        name: 'NICLASS课程发布指南',
+                        pic: '/public/images/yyxxgx.jpg',
+                        like: 20,
+                        eye: 50,
+                        leave: 0,
+                        header: '/public/images/8_150608172703_8.png'
+                    },
+                    {
+                        id: 1,
+                        name: 'NICLASS课程发布指南',
+                        pic: '/public/images/yyxxzxx.jpg',
+                        like: 20,
+                        eye: 50,
+                        leave: 0,
+                        header: '/public/images/8_150608172703_8.png'
+                    },
+                ],
+                news2: '',
+                time: 60,
+                timer: Object,
+                login1: '',
+                login2: '',
+                re1: '',
+                re2: '',
+                csrf: "{{ ctx.csrf | safe }}",
+                r1: true,
+                r2: false,
+                r3: false
+            },
+            beforeMount: function () {
+                this.news2 = this.news1
+                setInterval(() => {
+                    this.se()
+                }, 5000)
+            },
+            methods: {
+                a1: function () {
+                    if (this.name) {
+                        return true
+                    } else {
+                        return false
+                    }
+                },
+                cpxt: function (a) {
+
+                },
+                href1: function (a) {
+                    return '/index/fire?id=' + a
+                },
+                shuffle: function () {
+                    this.items = _.shuffle(this.items)
+                },
+                se: function () {
+                    var x = this.items1
+                    var b = _.rest(x);
+                    b.push(x[0])
+                    this.items1 = b
+                },
+                row: function (i) {
+
+                    if (i == 0) {
+                        return 'row1';
+
+                    } else {
+                        return 'row'
+                    }
+                },
+                ai: function (i) {
+                    var x = this.items1[0].id
+                    if (i == x) {
+                        return 'active'
+                    }
+                },
+                ai1: function (i) {
+                    var arr = [0, 0, 0, 0, 0, 0, 0];
+                    var b;
+                    for (var x of this.items1) {
+                        b = x.id - i
+
+                        if (b < 0) {
+                            b = 7 + b
+                        }
+                        arr[b] = x;
+
+                    }
+                    this.items1 = arr
+                },
+                jxyj1: function (i) {
+                    if (i == 0) {
+                        this.news2 = this.news1
+                    } else if (i == 1) {
+                        var x = []
+                        for (var i of this.news1) {
+                            if (i.pid == 1) {
+                                x.push(i)
+                            }
+                        }
+                        this.news2 = x
+                    } else if (i == 2) {
+                        var x = []
+                        for (var i of this.news1) {
+                            if (i.pid == 2) {
+                                x.push(i)
+                            }
+                        }
+                        this.news2 = x
+                    } else if (i == 3) {
+                        var x = []
+                        for (var i of this.news1) {
+                            if (i.pid == 3) {
+                                x.push(i)
+                            }
+                        }
+                        this.news2 = x
+                    }
+
+                },
+                jxyj2: function (i) {
+                    return '/cpxt?id=' + i
+                },
+                login: function () {
+                    this.login1 = '';
+                    this.login2 = '';
+
+                    var patrn = /^[+]{0,1}(\d){1,3}[ ]?([-]?((\d)|[ ]){1,12})+$/;
+                    var tel = this.tel
+                    if (!patrn.exec(tel)) {
+                        this.login1 = '手机号码不存在'
+                        return false
+                    }
+                    var data = {
+                        tel: this.tel,
+                        pwd: this.pwd,
+                        _csrf: this.csrf
+                    }
+                    this.$http.post('/login', data).then(response => {
+                        if (response.body.status == 0) {
+                            this.login1 = response.body.message
+                        } else {
+
+                            $('#myModal1').modal('hide')
+                            this.name = response.body.message.name
+                        }
+                    }, response => {
+                        alert('连接服务器失败')
+                    })
+
+                },
+                no() {
+                    if (this.time != 60) {
+                        return false
+                    }
+                    var url = '/user/node'
+                    var data = {
+                        tel: this.tel
+                    }
+                    this.$http.post(url, data).then(response => {
+                        if (response.body.status == 0) {
+
+                            this.re1 = response.body.message
+                        } else {
+                            this.tel1 = this.tel
+                            this.pro = response.body.message
+                            var a = this.hc
+                            this.timer = setInterval(a, 1000)
+
+                        }
+                    }, response => {
+                        alert('连接服务器失败')
+                    });
+
+                },
+                hc() {
+
+                    var a = this.time
+                    console.log(a, 1)
+                    $('#yzm').text(a + 's')
+                    $('#yzm').attr({
+                        disabled: 'disabled'
+                    })
+                    this.time--
+                    if (a == 0) {
+                        $('#yzm').text('获取验证码')
+                        $('#yzm').removeAttr('disabled')
+                        clearInterval(this.timer)
+                        this.time = 60
+                    }
+
+
+                },
+                peojects: function (i) {
+                    window.location.href = '/peojects?id=' + i
+                }
+            }
+        })
+
+    </script>
+    {% endblock %}
+

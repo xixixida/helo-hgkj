@@ -1,0 +1,606 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.4.2/vue.min.js"></script>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/vue-resource/1.3.4/vue-resource.min.js"></script>
+    <script src="https://cdn.bootcss.com/echarts/3.7.2/echarts.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #app {
+            width: 100%;
+            height: 100%;
+            background-color: #292931;
+            margin: 0 auto;
+            padding: 15px;
+            font-family: '微软雅黑';
+            display: flex;
+            justify-content: center;
+
+
+        }
+
+        .login {
+            margin-top: 8%;
+            padding-top: 15px;
+            padding-bottom: 30px;
+            padding-left: 30px;
+            padding-right: 30px;
+            min-height: 360px;
+            width: 400px;
+            height: 400px;
+            color: #bdbdbd;
+            font-size: 20px;
+            background: url(/public/img/border.png);
+            background-repeat: no-repeat;
+
+        }
+
+        span {
+            display: inline-block;
+        }
+
+        s {
+            display: inline-block;
+            color: #767676;
+        }
+
+        .zc1 {
+            width: 100px;
+            height: 10px;
+            border-top: 2px solid #767676;
+
+
+        }
+
+        .zc {
+            color: #fff;
+            font-size: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+
+        }
+
+        .center-block {
+            width: 180px;
+            margin: 0 auto;
+        }
+
+        #btn {
+            background: #5398f3;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .imgs {
+            border: 1px solid #5398f3;
+            border-radius: 5px;
+            display: inline-block;
+            position: absolute;
+            right: 0px;
+        }
+
+        .yzm {}
+
+        #yzm {
+            border: 1px solid #5398f3;
+            color: #fff;
+            position: absolute;
+            right: 0px;
+        }
+
+        #yzm:hover {
+            color: #5398f3;
+        }
+
+        .img {
+            display: block;
+            margin: 10px auto;
+
+        }
+
+        .input1 {
+            background: url(/public/img/tel.png) 20px;
+            background-repeat: no-repeat;
+        }
+
+        .input2 {
+            background: url(/public/img/dx.png) 20px;
+            background-repeat: no-repeat;
+
+        }
+
+        .input3 {
+            background: url(/public/img/pwd.png) 20px;
+            background-repeat: no-repeat;
+
+        }
+
+        .input4 {
+            background: url(/public/img/pwd2.png) 20px;
+            background-repeat: no-repeat;
+
+        }
+
+        .input5 {
+            background: url(/public/img/yzm.png) 20px;
+            background-repeat: no-repeat;
+        }
+
+        .input-group {
+            position: relative;
+            padding: 15px 0;
+            border-bottom: 1px solid #767676;
+            width: 340px;
+            background-size: 30px 30px;
+        }
+
+        .form-control1 {
+            border: none;
+            background: rgba(255, 255, 255, 0.0);
+            font-size: 16px;
+            padding-left: 5px;
+
+        }
+
+        .form-control1:focus {
+            border: none;
+            outline: medium;
+        }
+
+        input {
+            margin-left: 80px;
+        }
+
+        .btn {
+            font-size: 20px;
+        }
+
+    </style>
+    <script>
+        $(function() {
+            var w = document.documentElement.clientHeight;
+            var x = $('#app').height();
+            var h = $('.login').height() + 30
+            if (w > x) {
+                $('#app').height(w)
+                $('.login').css({
+                    backgroundSize: '400px ' + h + 'px'
+                })
+            } else {
+                $('.login').css({
+                    backgroundSize: '400px ' + h + 'px'
+                })
+            }
+        })
+        var fo4 = function () {
+            return Math.ceil(Math.random() * 10000)
+        }
+        
+    </script>
+</head>
+
+<body>
+    <div id='app'>
+        <!-- 登录 -->
+        <!--<div class='login' v-show='d1'>
+            <h3 align='center'>帐号登录</h3>
+            <div class="input-group">
+                <input type="text" class="form-control1" v-model='tel' placeholder="请输入手机号码">
+                <span class="input-group-addon glyphicon glyphicon-user"></span>
+            </div>
+            <br>
+            <div class="input-group">
+                <input type="password" class="form-control1" v-model='pwd' placeholder="请输入密码">
+                <span class="input-group-addon glyphicon glyphicon-lock "></span>
+            </div>
+            <br>
+            <div class="input-group">
+                <input type="text" class='form-control1' style="width: 150px;" v-model='yzm' placeholder="请输入验证码">
+                <img :src='img' width="100" @click='imgs(`login`)'>
+            </div>
+            <br>
+            <button type="button" class="btn btn-default  btn-block" @click='login1()'>登录</button>
+            <br>
+            <div class="input-group" v-show='userinfo'>
+                <h4 v-text='test1'></h4>
+            </div>
+            <div class="center-block">
+                <button class="btn-danger btn" @click='sh(2)'>注册</button>
+                <span>&nbsp;|&nbsp;</span>
+                <button class="btn-danger btn" @click='sh(3)'>忘记密码</button>
+            </div>
+        </div>
+        注册
+        <div class='login' v-show='d2'>
+            <h3 align='center'>帐号注册</h3>
+            <div class="input-group">
+                <input type="text" class="form-control1" v-model='tel' placeholder="请输入手机号码">
+                <span class="input-group-addon glyphicon glyphicon-user"></span>
+            </div>
+            <br>
+            <div class="input-group">
+                <input type="text" class="form-control1" style="width: 150px" v-model='node' placeholder="短信验证码">
+                <button type='button' class="btn btn-info yzm" @click='no()' id='yzm'>获取验证码</button>
+            </div>
+            <br>
+            <div class="input-group">
+                <input type="password" class="form-control1" v-model='pwd' placeholder="请输入密码">
+                <span class="input-group-addon glyphicon glyphicon-lock "></span>
+            </div>
+            <br>
+            <div class="input-group">
+                <input type="password" class="form-control1" v-model='pwds' placeholder="请确认密码">
+                <span class="input-group-addon glyphicon glyphicon-lock "></span>
+            </div>
+            <br>
+            <div class="input-group">
+                <input type="text" class='yzm form-control1' v-model='yzm' style="width: 150px" placeholder="请输入验证码">
+                <img :src='img' width="100" class='' @click='imgs(`register`)'>
+            </div>
+            <br>
+            <button type="button" class="btn btn-default btn-block" @click='register1()'>注册</button>
+            <br>
+            <div class="input-group" v-show='userinfo'>
+                <h4 class="" v-text='test1'></h4>
+            </div>
+            <div class="center-block">
+                <button class="btn-danger btn" @click='sh(1)'>登录</button>
+                <span>&nbsp;|&nbsp;</span>
+                <button class="btn-danger btn" @click='sh(3)'>忘记密码</button>
+            </div>
+        </div>-->
+
+
+        <!--找回密码-->
+        <div class="login" v-show='d3'>
+            <div style="margin-top: 20px;">
+                <span class="zc1"></span>
+                <span class="zc">找回密码</span>
+                <span class="zc1"></span>
+            </div>
+            <div v-if='a1'>
+                <div class="input-group input1">
+
+                    <input type="text" class="form-control1" v-model='tel' placeholder="请输入手机号码">
+                    <span class="glyphicon glyphicon-ok" style="color: green;" v-show='b1'></span>
+                    <span class="glyphicon glyphicon-remove" style="color: red;" v-show='c1'></span>
+                </div>
+                <br>
+                <div class="input-group input5">
+                    <input type="text" class='form-control1' style="width: 100px" v-model='yzm' placeholder="请输入验证码">
+
+
+                    <span class="glyphicon glyphicon-ok" style="color: green;" v-show='b2'></span>
+                    <span class="glyphicon glyphicon-remove" style="color: red;" v-show='c2'></span>
+                    <div style="width:100px; height:10px;"   id="main" ></div>    
+                    
+                </div>
+                <br>
+                <button type="button" class="btn btn-info  btn-block" @click='ca1()'>提交</button>
+            </div>
+            <div v-if='a2'>
+                <div class="input-group">
+                    我们将给{{ tel }}发送验证码。
+                </div>
+                <br>
+                <br>
+                <br>
+                <button type="button" class="btn btn-info  btn-block" @click='ca2()'>发送验证码</button>
+
+                <h5 align=center>点击按钮获取验证码</h5>
+            </div>
+            <div v-if='a3' style="position: relative; height: 100%">
+                <div class="input-group input2">
+                    <input type="text" class="form-control1" style="width: 100px" v-model='node' placeholder="短信验证码">
+                    <span class="glyphicon glyphicon-ok" style="color: green;" v-show='b3'></span>
+                    <span class="glyphicon glyphicon-remove" style="color: red;" v-show='c3'></span>
+                </div>
+                <button style="position: absolute; top:180px;" type='button' class="btn btn-info btn-block " @click='ca3()'>下一步</button>
+                <br>
+
+            </div>
+            <div v-if='a4'>
+                <div class="input-group input3">
+
+                    <input type="password" class="form-control1" v-model='pwd' placeholder="请输入密码">
+                </div>
+                <br>
+                <div class="input-group input4">
+
+                    <input type="password" class="form-control1" v-model='pwds' placeholder="请确认密码">
+                    <span class="glyphicon glyphicon-ok" style="color: green;" v-show='b4'></span>
+                    <span class="glyphicon glyphicon-remove" style="color: red;" v-show='c4'></span>
+                </div>
+                <br>
+                <button type="button" class="btn btn-info  btn-block" @click='ca4()'>保存</button>
+            </div>
+
+            <br>
+            <!-- <div class="center-block">
+                <button class="btn-danger btn" @click='sh(1)'>登录</button>
+                <span>&nbsp;|&nbsp;</span>
+                <button class="btn-danger btn" @click='sh(2)'>注册</button>
+            </div>-->
+        </div>
+    </div>
+    <script>
+        var myChart = echarts.init(document.getElementById('main'));
+        var option = {
+            title: {
+                text: 'ECharts 入门示例'
+            },
+            tooltip: {},
+            legend: {
+                data: ['销量']
+            },
+            xAxis: {
+                data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+        myChart.setOption(option);
+        var a = new Vue({
+            el: '#app',
+            data: {
+                d1: true,
+                d2: false,
+                d3: true,
+                tel: '',
+                pwd: '',
+                pwds: '',
+                node: '',
+                userinfo: false,
+                test1: '',
+                yzm: '',
+                img: '/tp5/public/index/index/yzm/c/' + Math.random() + '?yzm=pwd',
+                from: '',
+                a1: true,
+                a2: false,
+                a3: false,
+                a4: false,
+                time: 60,
+                timer: Object,
+                b1: false,
+                b2: false,
+                b3: false,
+                b4: false,
+                b5: false,
+                c1: false,
+                c2: false,
+                c3: false,
+                c4: false,
+                c5: false,
+                tel1: ''
+
+            },
+            methods: {
+                imgs: function (a) {
+                    this.img = '/tp5/public/index/index/yzm/c/' + Math.random() + '?yzm=' + a
+                },
+                login1: function () {
+                    var data = {
+                        tel: this.tel,
+                        pwd: this.pwd,
+                        yzm: this.yzm,
+                    }
+                    var url = '/tp5/public/index/user/login'
+                    this.$http.post(url, data).then(response => {
+                        if (response.body.status == 0) {
+                            this.userinfo = true
+                            this.test1 = response.body.message
+                        } else {
+                            alert('登录成功')
+                        }
+                    }, response => {
+                        alert('连接服务器失败')
+                    });
+                },
+                sh: function (a) {
+                    if (a == 1) {
+                        this.img = '/tp5/public/index/index/yzm/c/' + Math.random() + '?yzm=login'
+                        this.d1 = true
+                        this.d2 = false
+                        this.d3 = false
+                    } else if (a == 2) {
+                        this.img = '/tp5/public/index/index/yzm/c/' + Math.random() + '?yzm=register'
+                        this.d1 = false
+                        this.d2 = true
+                        this.d3 = false
+                    } else if (a == 3) {
+                        this.img = '/tp5/public/index/index/yzm/c/' + Math.random() + '?yzm=pwd'
+                        this.d1 = false
+                        this.d2 = false
+                        this.d3 = true
+                    }
+                },
+                ca1() {
+                    this.c2 = false
+                    this.c1 = false
+                    var url = '/tp5/public/index/user/forgetpwd'
+                    var data = {
+                        tel: this.tel,
+                        yzm: this.yzm,
+                        a: 'a1'
+                    }
+                    this.tel1 = this.tel
+                    this.$http.post(url, data).then(response => {
+                        if (response.body.status == 0) {
+                            if (response.body.message == '验证码不正确') {
+                                this.c2 = true
+
+                            } else {
+
+                                this.c1 = true
+                            }
+                            this.imgs('pwd')
+
+                            this.test1 = response.body.message
+                        } else {
+                            this.a1 = false
+                            this.a2 = true
+
+                        }
+                    }, response => {
+                        alert('连接服务器失败')
+                    });
+                },
+                ca2() {
+
+                    var url = '/tp5/public/index/user/forgetpwd'
+                    var data = {
+                        tel: this.tel,
+                        a: 'a2'
+                    }
+                    this.$http.post(url, data).then(response => {
+                        if (response.body.status == 0) {
+                            this.c2 = true
+                            this.test1 = response.body.message
+                        } else {
+                            this.pro = response.body.message
+                            this.a2 = false
+                            this.a3 = true
+                            this.userinfo = false
+                        }
+                    }, response => {
+                        alert('连接服务器失败')
+                    });
+                },
+                ca3() {
+                    this.userinfo = false
+                    if (this.pro != this.node) {
+                        this.c3 = true
+
+
+                    } else {
+                        this.a3 = false
+                        this.a4 = true
+                    }
+                },
+                ca4() {
+                    this.c3 = false
+                    this.c4 = false
+                    if (this.pwd != this.pwds) {
+                        this.c4 = true
+                        this.test1 = '两次输入的密码不同'
+                        return false
+                    }
+                    var url = '/tp5/public/index/user/forgetpwd'
+                    var data = {
+                        tel: this.tel,
+                        a: 'a4',
+                        pwd: this.pwd
+                    }
+                    this.$http.post(url, data).then(response => {
+                        if (response.body.status == 0) {
+                            this.c4 = true
+                            this.c3 = true
+                            this.test1 = response.body.message
+                        } else {
+                            alert('修改成功')
+                        }
+                    }, response => {
+                        alert('连接服务器失败')
+                    });
+                },
+                register1() {
+                    this.userinfo = false
+                    if (this.node == '') {
+                        this.userinfo = true
+                        this.test1 = '请填写手机验证码'
+                        return false
+                    }
+                    if (this.pro != this.node) {
+                        this.userinfo = true
+                        this.test1 = '手机验证码不正确'
+                        return false
+                    }
+                    if (this.pwd != this.pwds) {
+                        this.userinfo = true
+                        this.test1 = '两次输入不同'
+                        return false
+                    }
+                    var url = '/tp5/public/index/user/register'
+                    var data = {
+                        tel: this.tel,
+                        pwd: this.pwd,
+                        yzm: this.yzm
+                    }
+
+                    this.$http.post(url, data).then(response => {
+                        if (response.body.status == 0) {
+                            this.userinfo = true
+                            this.test1 = response.body.message
+                        } else {
+                            alert('注册成功')
+                        }
+
+
+
+                    }, response => {
+                        alert('连接服务器失败')
+                    });
+
+                },
+                no() {
+                    if (this.time != 60) {
+                        return false
+                    }
+                    var url = '/tp5/public/index/user/note'
+                    var data = {
+                        tel: this.tel
+                    }
+                    this.$http.post(url, data).then(response => {
+                        if (response.body.status == 0) {
+                            this.userinfo = true
+                            this.test1 = response.body.message
+                        } else {
+                            this.pro = response.body.message
+                            var a = this.hc
+                            this.timer = setInterval(a, 1000)
+
+                        }
+                    }, response => {
+                        alert('连接服务器失败')
+                    });
+
+                },
+                hc() {
+
+                    var a = this.time
+                    console.log(a, 1)
+                    $('#yzm').text(a + 's')
+                    $('#yzm').attr({
+                        disabled: 'disabled'
+                    })
+                    this.time--
+                    if (a == 0) {
+                        $('#yzm').text('获取验证码')
+                        $('#yzm').removeAttr('disabled')
+                        clearInterval(this.timer)
+                        this.time = 60
+                    }
+
+
+                }
+            }
+        })
+
+    </script>
+</body>
+
+
+</html>

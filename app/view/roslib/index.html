@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/socket.io/2.0.3/socket.io.js"></script>
+</head>
+<body>
+   <div class="wrapper" >
+       <div class="content" id='chat' >
+           <ul id='chat_conatiner'>
+               
+           </ul>
+       </div>
+       <div class="action" >
+           <textarea name="" id="" cols="30" rows="10"></textarea>
+           <button class="btn btn-success" id='clear' >清屏</button>
+           <button class="btn btn-success" id='send' >发送</button>
+       </div>
+   </div>
+    <script>
+        var ws = io.connect('/chat',{mess:123456})
+        var sendMsg = function(msg){
+            ws.emit('send.message',msg)
+            ws.emit('res',msg)
+            console.log(msg)
+        }
+        
+        var addMessage = function(from,msg){
+            var li = document.createElement('li');
+            li.innerHTML = '<span>' + from + '</span>' + ':' + msg;
+            document.querySelector('#chat_conatiner').appendChild(li)
+            document.querySelector('#chat').scrollTop = document.querySelector('#chat').scrollHeight;
+            
+            document.querySelector('textarea').focus()
+        }
+        
+        
+        var send = function(){
+            var ele_msg = document.querySelector('textarea');
+            var msg = ele_msg.value.replace('\r\n','').trim();
+            console.log(1+msg)
+            if(!msg) return;
+            sendMsg(msg);
+            addMessage('你',msg);
+            ele_msg.value = '';
+        }
+        
+        ws.on('connect', function(){
+            var nickname = window.prompt('输入你的昵称！');
+            while(!nickname){
+                nickname = window.prompt('昵称不为空，请重新输入！')
+            }
+            ws.emit('join',nickname)
+        })
+        
+        ws.on('nickname', function(){
+            var nickname = window.prompt('昵称有重复，请重新输入！')
+            while(!nickname){
+                nickname = window.prompt('昵称不能为空，请重新输入！')
+            }
+            ws.emit('join',nickanme)
+        })
+        
+        
+        
+        ws.on('send.message',function(from,msg){
+            addMessage(from,msg)
+        })
+        
+        ws.on('res',function(from,msg){
+            console.log(from)
+            console.log(msg)
+        })
+        
+        ws.on('annoucement',function(from,msg){
+            addMessage(from,msg)
+        })
+        
+        document.querySelector('textarea').addEventListener('keydom',function(event){
+            if(event.which == 13){
+                send()
+            }
+        })
+        
+        document.querySelector('#send').addEventListener('click',function(){
+            send()
+        })
+        
+        document.querySelector('#clear').addEventListener('click',function(){
+            document.querySelector('#chat_conatiner').innerHTML = ''
+        })
+
+    </script>
+</body>
+</html>
