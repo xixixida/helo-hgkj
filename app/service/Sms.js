@@ -4,8 +4,8 @@ module.exports = app => {
     return class Sms extends app.Service {
 
         * goto(tel) {
-            const accessKeyId = 'LTAI9r3ZjwD6juVL'
-            const secretAccessKey = '4X4UYSH98xNpmcif48Pb8w5mHizfG9'
+            const accessKeyId = ''
+            const secretAccessKey = ''
             const code = Math.round(Math.random() * 9000 + 1000);
             let smsClient = new SMSClient({
                 accessKeyId,
